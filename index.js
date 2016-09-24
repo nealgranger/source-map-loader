@@ -90,6 +90,13 @@ module.exports = function(input, inputMap) {
 			});
 			return;
 		}
+
+		if (!map.sourceRoot) {
+			map.sources = map.sources.map(function(source) {
+				return path.join(context, source);
+			});
+		}
+
 		callback(null, input.replace(match[0], ''), map);
 	}
 }
